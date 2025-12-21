@@ -1,0 +1,89 @@
+@use "./variables";
+
+/* -----------------------------
+   Flow Layout
+------------------------------ */
+.flowWrap {
+  position: relative;
+  padding: 72px 0;
+  overflow: hidden;
+}
+
+/* Grid: Navigation links, Content rechts */
+.flowGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Mobile */
+@media (max-width: 980px) {
+  .flowGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -----------------------------
+   Tree Navigation
+------------------------------ */
+.tree {
+  position: sticky;
+  top: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+.treeTitle {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.treeNodes {
+  display: grid;
+  gap: 12px;
+}
+
+.stepPill {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.stepPill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.stepPill.isActive {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* -----------------------------
+   Content Area
+------------------------------ */
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stageCard {
+  max-width: 920px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 10px);
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
