@@ -1,89 +1,436 @@
 @use "./variables";
 
-/* -----------------------------
-   Flow Layout
------------------------------- */
+/* --- WOW Flow Layout --- */
 .flowWrap {
   position: relative;
-  padding: 72px 0;
+  padding: var(--space-7) 0;
   overflow: hidden;
 }
 
-/* Grid: Navigation links, Content rechts */
-.flowGrid {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
-  align-items: flex-start;
+/* Glow Orbs */
+.flowBgOrbs .orb {
+  position: absolute;
+  filter: blur(38px);
+  opacity: 0.55;
+  transform: translateZ(0);
 }
 
-/* Mobile */
+.orbA {
+  width: 520px;
+  height: 520px;
+  left: -140px;
+  top: -160px;
+  background: rgba(124, 58, 237, 0.45);
+  border-radius: 50%;
+}
+
+.orbB {
+  width: 460px;
+  height: 460px;
+  right: -160px;
+  top: 40px;
+  background: rgba(34, 197, 94, 0.28);
+  border-radius: 50%;
+}
+
+.orbC {
+  width: 420px;
+  height: 420px;
+  left: 30%;
+  bottom: -220px;
+  background: rgba(59, 130, 246, 0.22);
+  border-radius: 50%;
+}
+
+/* Layout grid */
+.flowGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
 @media (max-width: 980px) {
   .flowGrid {
     grid-template-columns: 1fr;
   }
 }
 
-/* -----------------------------
-   Tree Navigation
------------------------------- */
-.tree {
-  position: sticky;
-  top: 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(14px);
+/* Tree */
+@media (max-width: 980px) {
+  .tree {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+  }
+
+  .stage {
+    margin-left: 0;
+  }
+
+  .flowGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
+
 .treeTitle {
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-weight: var(--fw-bold);
+}
+
+.treeLine {
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-3) 0 var(--space-4);
 }
 
 .treeNodes {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
+}
+
+.treeNode {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.treeDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  margin-top: 10px;
+}
+
+.treeDot.isActive {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(34, 197, 94, 0.55));
+}
+
+.treeDot.isDone {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(34, 197, 94, 0.22);
+}
+
+.treeHint {
+  margin-top: var(--space-2);
+  color: var(--muted);
+  font-size: var(--fs-badge);
 }
 
 .stepPill {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text);
   text-align: left;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: var(--space-3) var(--space-3);
+  border-radius: calc(var(--radius) - 4px);
+
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
 .stepPill:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.stepPill .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .stepPill.isActive {
+  border-color: rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* -----------------------------
-   Content Area
------------------------------- */
+.stepPill.isActive .dot {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(34, 197, 94, 0.75));
+}
+
+/* Stage */
 .stage {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stageTop {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.stageKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.kBadge {
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: var(--fs-badge);
+}
+
+.kSep {
+  color: var(--muted);
+}
+
+.kMuted {
+  color: var(--muted);
+  font-size: var(--fs-badge);
+}
+
+.stageNav {
+  display: flex;
+  gap: var(--space-2);
 }
 
 .stageCard {
-  max-width: 920px;
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 10px);
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: calc(var(--radius) + 6px);
+
+  padding: var(--card-pad);
+  backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
+
+  min-height: 360px;
+}
+
+/* Hero blocks */
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  font-size: var(--fs-badge);
+  font-weight: var(--fw-medium);
+}
+
+.heroTitle {
+  margin: var(--space-4) 0 var(--space-2);
+
+  /* deine H1 min/max verwenden */
+  font-size: clamp(var(--h1-min), 4.6vw, var(--h1-max));
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+}
+
+.heroLead {
+  margin-top: var(--space-3);
+  max-width: 62ch;
+  color: var(--muted);
+
+  /* deine Fontsize-Variablen nutzen */
+  font-size: var(--fs-4);
+  line-height: var(--lh-normal);
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+/* Facts */
+.miniFacts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 700px) {
+  .miniFacts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fact {
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.factTop {
+  color: var(--muted);
+  font-size: var(--fs-2);
+}
+
+.factVal {
+  margin-top: var(--space-2);
+  font-weight: var(--fw-bold);
+}
+
+/* Skills */
+.skillGrid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+@media (max-width: 820px) {
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillCard {
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.skillTop {
+  font-weight: var(--fw-bold);
+}
+
+.skillTxt {
+  margin-top: var(--space-2);
+  color: var(--muted);
+  line-height: var(--lh-normal);
+  font-size: var(--fs-3);
+}
+
+/* Contact */
+.contactGrid {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.contactCard {
+  display: grid;
+  grid-template-columns: 44px 1fr 24px;
+  gap: var(--space-3);
+  align-items: center;
+
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: calc(var(--radius) - 2px);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: var(--fs-4);
+}
+
+.cTop {
+  font-size: var(--fs-2);
+  color: var(--muted);
+}
+
+.cVal {
+  margin-top: var(--space-2);
+  font-weight: var(--fw-bold);
+}
+
+.cGo {
+  color: var(--muted);
+  font-weight: var(--fw-bold);
+}
+
+/* Bottom */
+.stageBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.progress {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 220px;
+}
+
+.progressBar {
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(34, 197, 94, 0.75));
+}
+
+.progressTxt {
+  color: var(--muted);
+  font-size: var(--fs-2);
+}
+
+.chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: var(--fs-2);
+}
+
+.chip.isActive {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.tinyNote {
+  margin-top: var(--space-4);
+  color: var(--muted);
+  font-size: var(--fs-2);
 }
