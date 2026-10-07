@@ -67,9 +67,10 @@ export default function Contact() {
 
           <div className="contact__links">
             <Reveal delay={0.1}>
-              <button type="button" className="contactLink" onClick={copy} data-cursor="Kopieren">
+              {/* Klick auf die Adresse öffnet das Mail-Programm, der Button daneben kopiert sie */}
+              <div className="contactLink">
                 <span className="mono contactLink__label">E-Mail</span>
-                <span className="contactLink__value is-email">
+                <a className="contactLink__value is-email" href={MAILTO} data-cursor="Mail">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.span
                       key={copied ? "copied" : "email"}
@@ -81,9 +82,18 @@ export default function Contact() {
                       {copied ? "Kopiert ✓" : EMAIL}
                     </motion.span>
                   </AnimatePresence>
-                </span>
-                <span className="contactLink__arrow">⧉</span>
-              </button>
+                </a>
+                <button
+                  type="button"
+                  className="contactLink__copy"
+                  onClick={copy}
+                  data-cursor="Kopieren"
+                  aria-label="E-Mail-Adresse kopieren"
+                  title="E-Mail-Adresse kopieren"
+                >
+                  ⧉
+                </button>
+              </div>
             </Reveal>
 
             <Reveal delay={0.2}>

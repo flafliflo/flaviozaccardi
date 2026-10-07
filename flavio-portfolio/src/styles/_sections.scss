@@ -1281,6 +1281,28 @@
     transform: translate(4px, -4px);
   }
 
+  &__copy {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    color: var(--accent);
+    font-size: 18px;
+    transition: background 0.4s var(--ease), color 0.4s var(--ease);
+
+    &:hover {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+  }
+
+  a.contactLink__value:hover {
+    color: var(--accent);
+  }
+
   @media (max-width: $bp-sm) {
     grid-template-columns: 1fr auto;
     &__label {
