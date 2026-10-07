@@ -10,7 +10,7 @@ import {
   wrap,
 } from "framer-motion";
 
-const ITEMS = ["React", "BormScript", "ERP", "SCSS", "JavaScript", "UI / UX", "Framer Motion", "Git"];
+const ITEMS = ["React", "BormScript", "Python", "C#", "SQL", "Rust", "JavaScript", "SCSS", "UI / UX", "Git"];
 
 // Endlos-Laufband, das auf Scroll-Geschwindigkeit reagiert (schneller, Richtungswechsel, Skew).
 function Row({ baseVelocity, outline }) {

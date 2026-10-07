@@ -92,8 +92,9 @@ export default function Hero({ ready }) {
           </motion.p>
 
           <motion.p className="hero__lead" {...fade(1.05)}>
-            17 Jahre alt, im 2. Lehrjahr als Applikationsentwickler. Ich entwickle ERP-Software,
-            baue moderne Web-Interfaces und liebe Details, die man spürt, bevor man sie sieht.
+            18 Jahre alt, im 3. Lehrjahr als Applikationsentwickler bei Borm Informatik und an der
+            GIBZ. Ich entwickle ERP-Software, baue moderne Web-Interfaces und liebe Details, die man
+            spürt, bevor man sie sieht.
           </motion.p>
 
           <motion.div className="hero__cta" {...fade(1.2)}>

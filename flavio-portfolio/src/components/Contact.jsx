@@ -25,7 +25,7 @@ export default function Contact() {
     <section className="contact section" id="contact">
       <div className="contact__glow" aria-hidden="true" />
       <div className="container">
-        <SectionLabel index="04">Kontakt</SectionLabel>
+        <SectionLabel index="05">Kontakt</SectionLabel>
 
         <motion.h2
           className="contact__title"
@@ -95,6 +95,19 @@ export default function Contact() {
               >
                 <span className="mono contactLink__label">GitHub</span>
                 <span className="contactLink__value">github.com/flafliflo</span>
+                <span className="contactLink__arrow">↗</span>
+              </a>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <a
+                className="contactLink"
+                href="https://www.linkedin.com/in/flavio-mattia-zaccardi/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="mono contactLink__label">LinkedIn</span>
+                <span className="contactLink__value">in/flavio-mattia-zaccardi</span>
                 <span className="contactLink__arrow">↗</span>
               </a>
             </Reveal>

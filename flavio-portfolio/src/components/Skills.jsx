@@ -35,6 +35,31 @@ const SKILLS = [
     text: "VS Code, Git & GitHub, Vite, Debugging.",
     icon: "⌘",
   },
+  {
+    title: "Python",
+    tag: "Sprache",
+    text: "Skripte, Automatisierung und kleine Tools.",
+    icon: "≈",
+  },
+  {
+    title: "C#",
+    tag: "Sprache",
+    text: "Objektorientiert programmieren mit .NET.",
+    icon: "#",
+  },
+  {
+    title: "SQL",
+    tag: "Datenbanken",
+    text: "Abfragen, Joins und saubere Datenmodelle.",
+    icon: "▤",
+  },
+  {
+    title: "Rust",
+    tag: "Am Lernen",
+    text: "Gerade dabei: Ownership, Borrowing und schneller, sicherer Code.",
+    icon: "⚙",
+    learning: true,
+  },
 ];
 
 // Karte mit 3D-Tilt und einem Licht-Spot, der dem Cursor folgt.
@@ -75,7 +100,10 @@ function TiltCard({ skill, index }) {
         <div className="skillCard__inner">
           <div className="skillCard__top">
             <span className="skillCard__icon">{skill.icon}</span>
-            <span className="mono skillCard__tag">{skill.tag}</span>
+            <span className={`mono skillCard__tag ${skill.learning ? "is-learning" : ""}`}>
+              {skill.learning && <span className="pulse" />}
+              {skill.tag}
+            </span>
           </div>
           <div>
             <h3 className="skillCard__title">{skill.title}</h3>

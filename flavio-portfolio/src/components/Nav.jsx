@@ -8,6 +8,7 @@ const LINKS = [
   { href: "#about", label: "Über mich" },
   { href: "#skills", label: "Skills" },
   { href: "#work", label: "Arbeit" },
+  { href: "#hobbies", label: "Hobbys" },
   { href: "#contact", label: "Kontakt" },
 ];
 const EASE = [0.16, 1, 0.3, 1];

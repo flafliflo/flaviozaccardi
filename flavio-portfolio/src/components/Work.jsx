@@ -22,10 +22,10 @@ const ITEMS = [
     href: "https://github.com/flafliflo/MyFirstwebsite",
   },
   {
-    kicker: "Ausbildung",
+    kicker: "Ausbildung · GIBZ",
     title: "Applikations­entwickler",
-    text: "Lehre im 2. Lehrjahr: Betrieb, Berufsschule und überbetriebliche Kurse. Jeden Tag ein bisschen besser.",
-    tags: ["Lehre", "Lernen", "Wachstum"],
+    text: "3. Lehrjahr: Praxis im Betrieb, Berufsschule an der GIBZ in Zug und überbetriebliche Kurse. Jeden Tag ein bisschen besser.",
+    tags: ["Lehre", "GIBZ", "3. Lehrjahr"],
     art: "rings",
   },
 ];

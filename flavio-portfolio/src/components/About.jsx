@@ -4,9 +4,9 @@ import { animate, motion, useInView, useScroll, useTransform } from "framer-moti
 import Reveal, { SectionLabel } from "./Reveal";
 
 const TEXT =
-  "Ich bin Flavio Mattia Zaccardi und mache meine Lehre als Applikationsentwickler bei Borm Informatik. " +
+  "Ich bin Flavio Mattia Zaccardi, 18 Jahre alt, und im 3. Lehrjahr als Applikationsentwickler bei Borm Informatik. " +
   "Im Alltag entwickle ich an unserem ERP-System mit BormScript, unserer eigenen Sprache, die JavaScript sehr ähnlich ist. " +
-  "In meiner Freizeit baue ich Web-Interfaces mit React und tüftle so lange an Animationen, bis sie sich richtig anfühlen.";
+  "Daneben baue ich Web-Interfaces mit React und tüftle so lange an Animationen, bis sie sich richtig anfühlen.";
 
 const HIGHLIGHT = new Set(["Applikationsentwickler", "ERP-System", "BormScript,", "React"]);
 
@@ -45,8 +45,8 @@ function Counter({ to, suffix = "" }) {
 }
 
 const STATS = [
-  { value: 17, label: "Jahre alt" },
-  { value: 2, suffix: ".", label: "Lehrjahr" },
+  { value: 18, label: "Jahre alt" },
+  { value: 3, suffix: ".", label: "Lehrjahr" },
   { value: 100, suffix: "%", label: "Motivation" },
 ];
 
