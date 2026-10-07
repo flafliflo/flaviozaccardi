@@ -19,7 +19,7 @@ const ITEMS = [
     text: "Von Grund auf mit React gebaut: eigene Animationen, Smooth Scrolling, interaktives Canvas und ein Custom Cursor.",
     tags: ["React", "Framer Motion", "SCSS"],
     art: "grid",
-    href: "https://github.com/flafliflo/MyFirstwebsite",
+    href: "https://github.com/flafliflo/flaviozaccardi",
   },
   {
     kicker: "Ausbildung · GIBZ",
