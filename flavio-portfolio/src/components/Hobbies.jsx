@@ -138,7 +138,7 @@ function TravelGallery() {
         >
           {photos.map((p, i) => (
             <motion.figure
-              className={`travelCard ${p.placeholder ? "is-placeholder" : ""}`}
+              className={`travelCard ${p.placeholder ? "is-placeholder" : ""} ${p.wide ? "is-wide" : ""}`}
               key={p.src || p.place}
               initial={{ opacity: 0, y: 60, rotate: i % 2 ? 3 : -3 }}
               whileInView={{ opacity: 1, y: 0, rotate: i % 2 ? 1.5 : -1.5 }}
@@ -152,7 +152,7 @@ function TravelGallery() {
                   <span className="mono">Foto folgt</span>
                 </div>
               ) : (
-                <img src={p.src} alt={p.place} draggable="false" loading="lazy" />
+                <img src={p.src} alt={p.place} draggable="false" decoding="async" />
               )}
               <figcaption>
                 <span>{p.place}</span>
