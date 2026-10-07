@@ -4,12 +4,32 @@ import { AnimatePresence, motion } from "framer-motion";
 const EASE = [0.76, 0, 0.24, 1];
 const WORDS = ["Code", "Design", "Motion", "Flavio"];
 
+// Intro nur beim ersten Besuch pro Tab-Sitzung zeigen
+function alreadySeen() {
+  try {
+    return sessionStorage.getItem("introSeen") === "1";
+  } catch {
+    return false;
+  }
+}
+
 export default function Preloader({ onDone }) {
+  const [skip] = useState(alreadySeen);
   const [count, setCount] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(!skip);
 
   useEffect(() => {
-    const duration = 2200;
+    try {
+      sessionStorage.setItem("introSeen", "1");
+    } catch {
+      // Ohne Storage wird das Intro einfach jedes Mal gezeigt
+    }
+    if (skip) onDone();
+  }, [skip, onDone]);
+
+  useEffect(() => {
+    if (skip) return;
+    const duration = window.innerWidth < 700 ? 1400 : 1900;
     const start = performance.now();
     let raf;
 
@@ -18,11 +38,11 @@ export default function Preloader({ onDone }) {
       const eased = 1 - Math.pow(1 - t, 3);
       setCount(Math.round(eased * 100));
       if (t < 1) raf = requestAnimationFrame(tick);
-      else setTimeout(() => setVisible(false), 250);
+      else setTimeout(() => setVisible(false), 150);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [skip]);
 
   const word = WORDS[Math.min(Math.floor(count / 26), WORDS.length - 1)];
 

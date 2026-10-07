@@ -113,6 +113,7 @@ function HobbyList() {
 // Zieh-Galerie für Reisefotos (oder Platzhalter, solange keine Bilder da sind).
 function TravelGallery() {
   const wrapRef = useRef(null);
+  const touch = useMediaQuery("(pointer: coarse)");
   const photos = TRAVEL_PHOTOS.length
     ? TRAVEL_PHOTOS
     : Array.from({ length: 5 }, (_, i) => ({ placeholder: true, place: `Reise ${i + 1}` }));
@@ -124,17 +125,17 @@ function TravelGallery() {
           Unterwegs<span>.</span>
         </Reveal>
         <Reveal className="mono travel__hint" delay={0.1}>
-          ← Ziehen zum Entdecken →
+          {touch ? "Wischen →" : "← Ziehen zum Entdecken →"}
         </Reveal>
       </div>
 
-      <div className="travel__viewport" ref={wrapRef}>
+      <div className={`travel__viewport ${touch ? "is-touch" : ""}`} ref={wrapRef}>
         <motion.div
           className="travel__track"
-          drag="x"
+          drag={touch ? false : "x"}
           dragConstraints={wrapRef}
           dragElastic={0.12}
-          data-cursor="Ziehen"
+          data-cursor={touch ? undefined : "Ziehen"}
         >
           {photos.map((p, i) => (
             <motion.figure

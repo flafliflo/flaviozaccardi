@@ -69,7 +69,7 @@ export default function Contact() {
             <Reveal delay={0.1}>
               <button type="button" className="contactLink" onClick={copy} data-cursor="Kopieren">
                 <span className="mono contactLink__label">E-Mail</span>
-                <span className="contactLink__value">
+                <span className="contactLink__value is-email">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.span
                       key={copied ? "copied" : "email"}

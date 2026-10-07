@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import useSmoothScroll, { setScrollLocked } from "./hooks/useSmoothScroll";
@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
   const [ready, setReady] = useState(false);
+  const handleLoaded = useCallback(() => setReady(true), []);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
@@ -29,7 +30,7 @@ export default function App() {
 
   return (
     <>
-      <Preloader onDone={() => setReady(true)} />
+      <Preloader onDone={handleLoaded} />
       <Cursor />
       <div className="grain" aria-hidden="true" />
       <motion.div className="scrollProgress" style={{ scaleX: progress }} aria-hidden="true" />

@@ -139,7 +139,7 @@ export default function Work() {
             </div>
           </>
         ) : (
-          <div className="container work__list">{panels}</div>
+          <div className="work__list">{panels}</div>
         )}
       </div>
     </section>

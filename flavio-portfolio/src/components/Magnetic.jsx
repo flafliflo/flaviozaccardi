@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 export default function Magnetic({ children, strength = 0.35, className = "" }) {
   const ref = useRef(null);
+  const finePointer = useMediaQuery("(pointer: fine)");
   const x = useSpring(useMotionValue(0), { stiffness: 220, damping: 16, mass: 0.4 });
   const y = useSpring(useMotionValue(0), { stiffness: 220, damping: 16, mass: 0.4 });
 
@@ -21,8 +23,8 @@ export default function Magnetic({ children, strength = 0.35, className = "" }) 
       ref={ref}
       className={`magnetic ${className}`}
       style={{ x, y }}
-      onPointerMove={onMove}
-      onPointerLeave={reset}
+      onPointerMove={finePointer ? onMove : undefined}
+      onPointerLeave={finePointer ? reset : undefined}
     >
       {children}
     </motion.div>

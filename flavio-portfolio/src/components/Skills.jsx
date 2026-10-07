@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 
+import useMediaQuery from "../hooks/useMediaQuery";
 import Reveal, { MaskHeading, SectionLabel } from "./Reveal";
 
 const SKILLS = [
@@ -65,6 +66,7 @@ const SKILLS = [
 // Karte mit 3D-Tilt und einem Licht-Spot, der dem Cursor folgt.
 function TiltCard({ skill, index }) {
   const ref = useRef(null);
+  const finePointer = useMediaQuery("(pointer: fine)");
   const rx = useSpring(useMotionValue(0), { stiffness: 200, damping: 20 });
   const ry = useSpring(useMotionValue(0), { stiffness: 200, damping: 20 });
   const mx = useMotionValue(50);
@@ -92,8 +94,8 @@ function TiltCard({ skill, index }) {
         ref={ref}
         className="skillCard"
         style={{ rotateX: rx, rotateY: ry }}
-        onPointerMove={onMove}
-        onPointerLeave={reset}
+        onPointerMove={finePointer ? onMove : undefined}
+        onPointerLeave={finePointer ? reset : undefined}
       >
         <motion.div className="skillCard__border" style={{ background: border }} aria-hidden="true" />
         <motion.div className="skillCard__spot" style={{ background: spotlight }} aria-hidden="true" />
