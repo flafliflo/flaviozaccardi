@@ -3,37 +3,17 @@ import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motio
 
 import useMediaQuery from "../hooks/useMediaQuery";
 import TRAVEL_PHOTOS from "../data/travel";
+import PixelArt from "./PixelArt";
 import Reveal, { MaskHeading, SectionLabel } from "./Reveal";
 
 const EASE = [0.16, 1, 0.3, 1];
 
-const ICONS = {
-  travel: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M2 16l20-8-6 13-3-6-6-1z" />
-      <path d="M13 15l3-3" />
-    </svg>
-  ),
-  gym: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 7v10M3 9.5v5M18 7v10M21 9.5v5M6 12h12" />
-    </svg>
-  ),
-  f1: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 21V4" />
-      <path d="M5 4h14v9H5" />
-      <path d="M5 8.5h14M9.7 4v9M14.3 4v9" />
-    </svg>
-  ),
-  football: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" />
-      <path d="M12 3v4.5M20.6 9.2l-4.6 1.2M17.3 19.4l-2.8-4.3M6.7 19.4l2.8-4.3M3.4 9.2l4.6 1.2" />
-    </svg>
-  ),
-};
+const PLANE_ICON = (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M2 16l20-8-6 13-3-6-6-1z" />
+    <path d="M13 15l3-3" />
+  </svg>
+);
 
 const HOBBIES = [
   {
@@ -68,7 +48,7 @@ function Preview({ id }) {
   }
   return (
     <div className={`hobbyPreview__art hobbyPreview__art--${id}`}>
-      <span className="hobbyPreview__icon">{ICONS[id]}</span>
+      <PixelArt name={id} fast className="hobbyPreview__pixel" />
     </div>
   );
 }
@@ -98,7 +78,9 @@ function HobbyList() {
         <Reveal key={h.id} delay={i * 0.06} y={30}>
           <div className="hobbyRow" onPointerEnter={() => setActive(h.id)}>
             <span className="mono hobbyRow__num">0{i + 1}</span>
-            <span className="hobbyRow__icon">{ICONS[h.id]}</span>
+            <span className="hobbyRow__icon">
+              <PixelArt name={h.id} fast={active === h.id} />
+            </span>
             <h3 className="hobbyRow__title">{h.title}</h3>
             <p className="hobbyRow__text">{h.text}</p>
             <span className="chip hobbyRow__tag">{h.tag}</span>
@@ -166,7 +148,7 @@ function TravelGallery() {
             >
               {p.placeholder ? (
                 <div className="travelCard__placeholder">
-                  {ICONS.travel}
+                  {PLANE_ICON}
                   <span className="mono">Foto folgt</span>
                 </div>
               ) : (
