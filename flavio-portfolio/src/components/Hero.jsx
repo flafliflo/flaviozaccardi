@@ -70,7 +70,17 @@ export default function Hero({ ready }) {
         </motion.div>
 
         <h1 className="hero__title">
-          <SplitLine text="Flavio" delay={0.1} ready={ready} />
+          <span className="hero__firstRow">
+            <SplitLine text="Flavio" delay={0.1} ready={ready} />
+            <motion.span
+              className="hero__middle"
+              initial={{ opacity: 0, x: -20 }}
+              animate={ready ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 1, ease: EASE, delay: 0.6 }}
+            >
+              Mattia
+            </motion.span>
+          </span>
           <span className="hero__titleRow">
             <SplitLine text="Zaccardi" delay={0.3} ready={ready} />
             <motion.span

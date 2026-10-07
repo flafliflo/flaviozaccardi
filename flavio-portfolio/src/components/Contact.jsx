@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { EMAIL, GITHUB, LINKEDIN, MAILTO } from "../data/contact";
 import Magnetic from "./Magnetic";
 import Reveal, { SectionLabel } from "./Reveal";
 
-const EMAIL = "flavio.zacc08@gmail.com";
-const MAILTO = `mailto:${EMAIL}?subject=Kontakt%20%C3%BCber%20Portfolio&body=Hallo%20Flavio%2C`;
 const EASE = [0.16, 1, 0.3, 1];
 
 export default function Contact() {
@@ -99,7 +98,7 @@ export default function Contact() {
             <Reveal delay={0.2}>
               <a
                 className="contactLink"
-                href="https://github.com/flafliflo"
+                href={GITHUB}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -112,7 +111,7 @@ export default function Contact() {
             <Reveal delay={0.3}>
               <a
                 className="contactLink"
-                href="https://www.linkedin.com/in/flavio-mattia-zaccardi/"
+                href={LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
               >

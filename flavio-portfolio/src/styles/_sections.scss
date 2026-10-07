@@ -207,6 +207,28 @@
     text-transform: uppercase;
   }
 
+  &__firstRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.14em;
+  }
+
+  &__middle {
+    display: inline-block;
+    margin-top: 0.12em;
+    font-size: max(0.3em, 15px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent);
+
+    // Auf kleinen Screens wäre die Kontur zu dünn: gefüllt statt umrandet
+    @media (max-width: $bp-sm) {
+      color: var(--accent);
+      -webkit-text-stroke: 0;
+    }
+  }
+
   &__titleRow {
     display: flex;
     align-items: center;
@@ -1315,35 +1337,133 @@
 .footer {
   position: relative;
   border-top: 1px solid var(--line);
+  padding-top: clamp(56px, 10vh, 96px);
   overflow: hidden;
 
-  &__inner {
+  &__top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  &__claim {
+    max-width: 420px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  &__heading {
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  &__link {
+    font-size: 16px;
+    transition: color 0.3s var(--ease);
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  // Name über die volle Breite: 8 Zeichen + Punkt passen genau rein
+  &__wordmark {
+    margin-top: clamp(48px, 10vh, 96px);
+    font-family: var(--font-display);
+    font-weight: 800;
+    // Schriftgrösse aus der Containerbreite: "ZACCARDI." ist ca. 9.6em breit
+    font-size: calc(min(100vw - var(--gutter) * 2, var(--maxw)) / 9.6);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: linear-gradient(180deg, var(--text) 30%, rgba(244, 244, 240, 0.25));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    user-select: none;
+
+    span {
+      color: var(--accent);
+      -webkit-text-fill-color: var(--accent);
+    }
+  }
+
+  &__bottom {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 16px;
-    padding-block: 28px;
+    margin-top: 28px;
+    padding-block: 20px 28px;
+    border-top: 1px solid var(--line);
     color: var(--muted);
   }
 
-  &__top:hover {
-    color: var(--accent);
+  &__up {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    font-size: 18px;
+    color: var(--text);
+    transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
+
+    &:hover {
+      background: var(--accent);
+      color: var(--accent-ink);
+      transform: translateY(-3px);
+    }
   }
 
-  &__giant {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 11.2vw;
-    line-height: 0.75;
-    letter-spacing: -0.06em;
-    text-align: center;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
-    background: linear-gradient(180deg, rgba(212, 255, 58, 0.25), transparent 80%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    user-select: none;
-    translate: 0 6%;
+  @media (max-width: $bp-md) {
+    &__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 24px;
+    }
+
+    &__claim {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: $bp-sm) {
+    padding-top: 56px;
+
+    &__link {
+      font-size: 17px;
+      padding-block: 2px;
+    }
+
+    &__wordmark {
+      margin-top: 48px;
+      font-size: calc((100vw - var(--gutter) * 2) / 8.9);
+
+      span {
+        display: none;
+      }
+    }
+
+    &__bottom .mono {
+      font-size: 10px;
+    }
   }
 }
 
@@ -1590,8 +1710,4 @@
     gap: 6px 12px;
   }
 
-  .footer__inner {
-    flex-direction: column;
-    gap: 8px;
-  }
 }
