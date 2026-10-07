@@ -1,28 +1,23 @@
 :root {
---ui-scale: 1.12;
---maxw: 1200px;
+  --bg: #09090b;
+  --bg-2: #111114;
+  --surface: rgba(255, 255, 255, 0.035);
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --text: #f4f4f0;
+  --muted: rgba(244, 244, 240, 0.55);
+  --accent: #d4ff3a;
+  --accent-ink: #0b0d02;
 
---space-2: calc(8px * var(--ui-scale));
---space-3: calc(12px * var(--ui-scale));
---space-4: calc(16px * var(--ui-scale));
---space-5: calc(20px * var(--ui-scale));
---space-6: calc(28px * var(--ui-scale));
---space-7: calc(40px * var(--ui-scale));
---space-8: calc(64px * var(--ui-scale));
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
---fs-1: calc(13px * var(--ui-scale));
---fs-2: calc(14px * var(--ui-scale));
---fs-3: calc(16px * var(--ui-scale));
---fs-4: calc(18px * var(--ui-scale));
---fs-5: calc(22px * var(--ui-scale));
-
---fs-badge: calc(13px * var(--ui-scale));
---fs-button: calc(15px * var(--ui-scale));
-
---h1-min: calc(32px * var(--ui-scale));
---h1-max: calc(52px * var(--ui-scale));
-
---card-pad: calc(22px * var(--ui-scale));
-
-
+  --maxw: 1320px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 22px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+$bp-md: 900px;
+$bp-sm: 600px;

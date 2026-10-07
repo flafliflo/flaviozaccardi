@@ -1,16 +1,29 @@
-# React + Vite
+# Flavio Zaccardi — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Persönliche Portfolio-Website, gebaut mit React, Vite, SCSS, Framer Motion und Lenis.
 
-Currently, two official plugins are available:
+## Effekte
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Preloader mit Zähler und Curtain-Reveal
+- Interaktives Punkt-Raster im Hero (Canvas), das dem Cursor ausweicht
+- Buchstabenweise Titel-Animation und Scramble-Text für die Rollen
+- Custom Cursor mit Labels und magnetische Buttons
+- Smooth Scrolling (Lenis) und Scroll-Fortschrittsbalken
+- Laufband, das auf Scroll-Geschwindigkeit reagiert
+- Wort-für-Wort-Reveal im "Über mich"-Text, animierte Zähler
+- Bento-Grid mit 3D-Tilt und Spotlight-Rand
+- Horizontaler Scroll-Bereich für "Ausgewählte Arbeit"
+- Respektiert `prefers-reduced-motion`
 
-## React Compiler
+## Starten
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Struktur
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/components/` – eine Datei pro Sektion bzw. Effekt
+- `src/hooks/` – Smooth Scroll und Media Queries
+- `src/styles/` – Variablen, Basis-Styles und Sektionen
