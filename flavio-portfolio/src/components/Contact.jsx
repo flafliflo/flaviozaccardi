@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Magnetic from "./Magnetic";
 import Reveal, { SectionLabel } from "./Reveal";
 
-const EMAIL = "flavio.zaccardi@bluewin.ch";
+const EMAIL = "flavio.zacc08@gmail.com";
 const MAILTO = `mailto:${EMAIL}?subject=Kontakt%20%C3%BCber%20Portfolio&body=Hallo%20Flavio%2C`;
 const EASE = [0.16, 1, 0.3, 1];
 
